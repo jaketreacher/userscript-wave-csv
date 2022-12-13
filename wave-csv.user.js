@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Wave - Save as CSV
-// @version      0.1
+// @version      0.2
 // @description  Download the current table as a CSV file.
 // @author       Jake Treacher
 // @license      GNU GPLv3
@@ -39,10 +39,10 @@
       ];
     });
 
-    const csvContent =
-      "data:text/csv;charset=utf-8," + data.map((e) => e.join(",")).join("\n");
+    const csvContent = data.map((e) => e.join(",")).join("\n");
 
-    const encodedUri = encodeURI(csvContent);
+    const encodedUri =
+      "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent);
     window.open(encodedUri);
   };
 
